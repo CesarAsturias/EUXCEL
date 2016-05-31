@@ -1,0 +1,35 @@
+\frametitle{Wind Energy Capacity installed today}
+
+%	  \begin{tikzpicture}
+%		  \begin{axis}[
+%			width = 10cm, height=6cm,
+%			grid = major,
+%			grid style={dashed, gray!30},
+%			axis background/.style={fill=white},
+%			ylabel= Gigawatts,
+%			xlabel= Year,
+%			/pgf/number format/.cd,
+%			use comma,
+%			1000 sep={},
+%		tick align = outside]
+%		\addplot table []{data/Capacityinstalled.csv};
+%	\end{axis}
+%\end{tikzpicture}
+\begin{figure}[!h]
+\centering
+
+\begin{tikzpicture}[scale=0.9]
+	\begin{axis}
+		[title=Capacity Installed,
+		 xlabel={Year},
+		 ylabel={Gigawatts},
+		 /pgf/number format/.cd, % To display the years correctly
+		 1000 sep={},
+		 ybar,
+		 bar width=7pt, % Separation between bars
+	 ]
+	 \addplot[blue!20!black, fill=blue!80!white]  table {data/Capacityinstalled.csv};
+	\end{axis}
+\end{tikzpicture}
+
+\end{figure}

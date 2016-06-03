@@ -34,8 +34,7 @@
 
 \end{frame}
 
-\section
-  {Motivation}
+\section {Motivation}
 
 \subsection{Capacity installed}
 
@@ -78,21 +77,42 @@
 
 \subsection{WTG Blade Faults}
 
-\begin{frame}{Faults}
+\begin{frame}{Blade Faults and Unavailability}
 	\begin{columns}[T]
-	\begin{column}{.48\textwidth}
+	\begin{column}{4.5cm}
+		Most common faults of blades:	
 		\begin{itemize}
 
-			\item Fault 1
-			\item Fault 2
+			\item Delamination
+			\item Fatigue
+			\item Lightning damage
+			\item Cracks
+			\item Lack of glue
+			\item Others
 
 		\end{itemize}
 	\end{column}
-
-	\begin{column}{.48\textwidth}
-
-		Picture
-
+	
+	\begin{column}{6cm}
+		Unavailability
+		\begin{figure}[!h]
+			\centering
+			\begin{tikzpicture}[scale=0.7]
+				\begin{axis}
+				[title=Contribution to Unavailability,
+		 		ylabel=\%,
+		 		/pgf/number format/.cd, % To display the years correctly
+		 		1000 sep={},
+				xticklabels from table={data/CUnavailability.csv}{System},
+				xtick=data,
+				ybar,
+				x tick label style={rotate=75, anchor=east}
+		 		 % Separation between bars
+	 			]
+				\addplot  [blue!20!black, fill=blue] table[ x expr=\coordindex, y=Contribution] {data/CUnavailability.csv};
+				\end{axis}
+			\end{tikzpicture}
+		\end{figure}
 	\end{column}
 	\end{columns}
 \end{frame}

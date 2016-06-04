@@ -3,7 +3,7 @@
 
 \usepackage{amsmath, amsfonts, graphicx}
 \usepackage{bibunits, tikz}
-\usetikzlibrary{datavisualization, datavisualization.formats.functions}
+\usetikzlibrary{trees, datavisualization, datavisualization.formats.functions, mindmap, shadows}
 \usepackage{pgfplots}
 \usetheme{progressbar}
 
@@ -78,26 +78,26 @@
 \subsection{WTG Blade Faults}
 
 \begin{frame}{Blade Faults and Unavailability}
-	\begin{columns}[T]
-	\begin{column}{4.5cm}
-		Most common faults of blades:	
-		\begin{itemize}
+	%\begin{columns}[T]
+	%\begin{column}{4.5cm}
+	%	Most common faults of blades:	
+	%	\begin{itemize}
 
-			\item Delamination
-			\item Fatigue
-			\item Lightning damage
-			\item Cracks
-			\item Lack of glue
-			\item Others
+	%		\item Delamination
+	%		\item Fatigue
+	%		\item Lightning damage
+	%		\item Cracks
+	%		\item Lack of glue
+	%		\item Others
 
-		\end{itemize}
-	\end{column}
+	%	\end{itemize}
+	%\end{column}
 	
-	\begin{column}{6cm}
-		Unavailability per system:
+	%\begin{column}{6cm}
+		
 		\begin{figure}[!h]
 			\centering
-			\begin{tikzpicture}[scale=0.7]
+			\begin{tikzpicture}[scale=0.82]
 				\begin{axis}
 				[title=Contribution to Unavailability,
 		 		ylabel=\%,
@@ -114,8 +114,28 @@
 			\end{tikzpicture}
 		\end{figure}
 		
-	\end{column}
-	\end{columns}
+	%\end{column}
+	%\end{columns}
+\end{frame}
+
+\begin{frame}{Blade Faults and Unavailability}
+	%\begin{figure}[h]
+	\centering
+	\tikz [scale=0.64,
+		mindmap, every node/.style={concept,scale=0.5, font=\fontsize{14pt}{17pt},font=\bfseries},
+		root concept/.append style={concept color=black, circular drop shadow, fill=white, line width=1ex, text=black, font=\large\scshape},
+		text=white,
+		grow cyclic,
+		level 1/.style={level distance=4.1cm, sibling angle=60},
+		level 2/.style={text width=4cm, font=\large\scshape, level distance=3cm,sibling angle=45}]
+		\node [root concept]{Unavailability} %rooti
+		child [concept color=red]{ node{Delamination}} 
+		child [concept color=blue]{node {Fatigue}}
+		child [concept color=purple]{node{Lightning damage}}
+		child [concept color=black!60]{node{Cracks}}
+		child [concept color=orange]{node{Lack of glue}}
+		child [concept color=green!50!black]{node{Others}};
+%\end{figure}
 \end{frame}
 
 \subsection{Difficult to  inspect}
@@ -124,8 +144,9 @@
 	
 	\begin{itemize}
 		\item Mainly visual from the ground, using telescopes
-		\item Unscheduled inspections
+		\item Unscheduled
 		\item Poor precision and accuracy on the diagnosis
+		\item Economic losses due to unavailability of the WTG when there is wind power production available
 	\end{itemize}
 	
 	
